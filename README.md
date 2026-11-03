@@ -19,7 +19,7 @@ The project aims to:
 | Model | SM-R390 |
 | Reported firmware | `R390XXU0AZA3` |
 | Region | France / Europe |
-| Firmware verification | Pending confirmation from the watch's software-information screen |
+| Firmware verification | User confirmed: `R390XXU0AZA3` |
 
 ## Project layout
 
@@ -37,7 +37,7 @@ See [`docs/RESEARCH_GALAXY_FIT3.md`](docs/RESEARCH_GALAXY_FIT3.md) for the commu
 
 ## First visible Fit3 milestone
 
-The first safe on-watch deliverable is a LeafVibe-branded offline watch face (no firmware flashing): see [the LeafVibe watch-face project](watchfaces/leafvibe/README.md), [import/export and installation guide](watchfaces/leafvibe/IMPORT_EXPORT.md), and [tonight's milestone plan](docs/TONIGHT_MILESTONE.md). The PNG assets are design resources; the installable watch-face BIN and editable R390 Studio ZIP must still be exported and tested on the physical watch.
+The first safe on-watch deliverable is a LeafVibe-branded offline watch face (no firmware flashing): see [the LeafVibe watch-face project](watchfaces/leafvibe/README.md), [import/export and installation guide](watchfaces/leafvibe/IMPORT_EXPORT.md),  [installation readiness status](watchfaces/leafvibe/INSTALLATION_STATUS.md), and [tonight's milestone plan](docs/TONIGHT_MILESTONE.md). The PNG assets are design resources; the installable watch-face BIN and editable R390 Studio ZIP must still be exported and tested on the physical watch.
 
 ## Safety
 
