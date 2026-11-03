@@ -47,13 +47,17 @@ class OfflineSyncCoordinator(
             return
         }
 
+        val lock = Any()
         var completed = 0
         var acknowledged = 0
 
         fun finishOne() {
-            completed += 1
-            if (completed == batch.size) {
-                onFinished(acknowledged, outbox.pendingCount())
+            val isFinished = synchronized(lock) {
+                completed += 1
+                completed == batch.size
+            }
+            if (isFinished) {
+                onFinished(synchronized(lock) { acknowledged }, outbox.pendingCount())
             }
         }
 
@@ -64,11 +68,13 @@ class OfflineSyncCoordinator(
                         if (result.acknowledgedMessageId == message.messageId &&
                             outbox.markDelivered(result.acknowledgedMessageId)
                         ) {
-                            acknowledged += 1
+                            synchronized(lock) { acknowledged += 1 }
                         }
                     }
-                    is TransportResult.RetryableFailure -> outbox.recordAttempt(message.messageId)
-                    is TransportResult.PermanentFailure -> outbox.recordAttempt(message.messageId)
+                    is TransportResult.RetryableFailure ->
+                        outbox.recordAttempt(message.messageId)
+                    is TransportResult.PermanentFailure ->
+                        outbox.recordAttempt(message.messageId)
                 }
                 finishOne()
             }
