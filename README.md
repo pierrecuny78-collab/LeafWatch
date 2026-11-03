@@ -23,13 +23,17 @@ The project aims to:
 
 ## Project layout
 
-- `docs/` — architecture, compatibility, security and recovery notes
+- `docs/` — architecture, compatibility, security, recovery and Fit3 research notes
 - `watch/` — original watch-side application code and SDK integration
 - `bridge/` — Android/Bluetooth bridge design
 - `shared/` — protocol and data schemas shared by devices
 - `simulator/` — host-side development and UI simulation
 - `tests/` — automated tests
 - `tools/` — validation and build helpers
+
+## Research starting point
+
+See [`docs/RESEARCH_GALAXY_FIT3.md`](docs/RESEARCH_GALAXY_FIT3.md) for the community-project survey, technical constraints, proposed architecture, Bluetooth research plan, security requirements and staged roadmap.
 
 ## Safety
 
