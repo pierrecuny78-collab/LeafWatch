@@ -103,9 +103,6 @@ class OfflineOutbox(context: Context) :
     /** Record a failed or interrupted attempt without deleting the message. */
     @Synchronized
     fun recordAttempt(messageId: String) {
-        val values = ContentValues().apply {
-            put("attempts", "attempts + 1")
-        }
         writableDatabase.execSQL(
             "UPDATE $TABLE SET attempts = attempts + 1 WHERE message_id = ? AND status = ?",
             arrayOf(messageId, STATUS_PENDING)
