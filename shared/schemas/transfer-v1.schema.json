@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/leafwatch/transfer-v1.schema.json",
+  "title": "LeafWatch transfer envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol",
+    "message_id",
+    "kind",
+    "created_at",
+    "payload"
+  ],
+  "properties": {
+    "protocol": {
+      "const": "leafwatch.transfer.v1"
+    },
+    "message_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "kind": {
+      "enum": [
+        "note.created",
+        "note.updated",
+        "task.created",
+        "task.updated",
+        "sync.ack"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}
