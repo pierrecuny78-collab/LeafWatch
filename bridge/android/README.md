@@ -14,17 +14,17 @@ This directory contains the first Android-side building block for LeafWatch. It 
 ## Files
 
 - `OfflineOutbox.kt`: durable local queue using Android's built-in SQLite APIs; no network or third-party library.
-- `BridgeContract.kt`: transport boundary. A real BLE implementation must be supplied only after the Fit3 service/characteristics and authentication behavior are verified on the exact watch firmware.
+- `BridgeContract.kt`: transport boundary. A real BLE implementation must be supplied only after the Fit3 service/characteristics and authentication behavior are verified on the exact watch firmware.\n- `LeafWatchNotification.kt`: creates a real local Android notification for TEST 001; it can be mirrored by Galaxy Wearable to the Fit3.\n- `NOTIFICATION_TEST.md`: integration steps, Android 13+ permission handling and offline test procedure.
 
 ## Current limitation
 
-This is not yet a working Bluetooth sender. The Fit3's supported GATT service, characteristics, framing and acknowledgement mechanism are not confirmed in this repository. The transport interface deliberately prevents us from inventing UUIDs or sending data through an unverified service.
+This is not yet a working direct Bluetooth sender. The Fit3's supported GATT service, characteristics, framing and acknowledgement mechanism are not confirmed in this repository. The notification helper is a separate first smoke test: Android posts a local notification and Galaxy Wearable may mirror it to the Fit3. The transport interface deliberately prevents us from inventing UUIDs or sending data through an unverified service.
 
 The existing Fit3 is not Wear OS. This Android code does not install an APK on the watch and does not create a watch-side receiver by itself.
 
 ## Integration sequence
 
-1. Add these Kotlin sources to the LeafVibe Android app.
+1. Add these Kotlin sources to the LeafVibe Android app. For the notification-only smoke test, follow `NOTIFICATION_TEST.md` first.
 2. Create the outbox with the app's application context.
 3. Enqueue a non-sensitive `leafwatch.transfer.v1` test envelope.
 4. When a verified transport is available, send pending messages.
