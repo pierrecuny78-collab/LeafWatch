@@ -1,0 +1,13 @@
+{
+  "protocol": "leafwatch.transfer.v1",
+  "message_id": "example-note-0001",
+  "kind": "note.created",
+  "created_at": "2026-11-03T12:00:00Z",
+  "payload": {
+    "document_id": "note-0001",
+    "title": "Ma première idée",
+    "body": "Brouillon créé sur LeafWatch.",
+    "format": "text/plain",
+    "revision": 1
+  }
+}
